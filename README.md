@@ -29,6 +29,8 @@ docker build -t bililive-go-analyze:latest .
 ```
 飞牛NAS示例
 
+```docker pull shengsheng123/bililive-go-analyze-shared-link:latest```
+
 <img width="670" height="290" alt="截屏2025-08-09 21 16 18" src="https://github.com/user-attachments/assets/2ec99eeb-9bd6-401d-9b06-467e37b94665" />
 
 <img width="656" height="204" alt="截屏2025-08-09 21 16 13" src="https://github.com/user-attachments/assets/72ca52ab-72f7-44b9-8bcd-bfb52e68d4b6" />
