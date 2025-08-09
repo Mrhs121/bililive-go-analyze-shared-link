@@ -1,9 +1,24 @@
 from flask import Flask, request, render_template
+from urllib.parse import urlparse
+import sys
 import re
 import requests
 import json
+
 app = Flask(__name__)
-nas_biligo_url = "http://192.168.6.188:8080"
+
+if len(sys.argv) < 2:
+    print("Usage：python app.py <nas_biligo_url>")
+    sys.exit(1)
+
+def normalize_url(url: str) -> str:
+    if not url.startswith(("http://", "https://")):
+        return "http://" + url
+    return url
+
+raw_url = sys.argv[1]
+nas_biligo_url = normalize_url(raw_url).rstrip("/")
+print(nas_biligo_url)
 nas_biligo_post_api = nas_biligo_url + "/api/lives"
 
 
