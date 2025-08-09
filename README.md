@@ -23,6 +23,11 @@ python live_http_server.py
 ```
 <img width="1084" height="137" alt="截屏2025-08-09 19 25 24" src="https://github.com/user-attachments/assets/f5e533f5-3175-422a-95ab-5c2b02ca5ba8" />
 
+### 构建Docker镜像
+```
+docker build -t bililive-go-analyze:latest .
+```
+
 ## 4. Demo 演示
 例如QQ飞车手游的抖音直播间
 
