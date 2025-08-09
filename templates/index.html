@@ -137,27 +137,66 @@
 		        padding: 10px 20px;
 		    }
 		}
+		.loading-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+			color: #fff;
+			font-size: 16px;
+		}
+
+		.spinner {
+			border: 4px solid #f3f3f3;
+			border-top: 4px solid #00b4ef;
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+			animation: spin 1s linear infinite;
+			margin-bottom: 10px;
+		}
+
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
 	</style>
 
 <script type="text/javascript">
-        function login() {
-        	var name1 = document.getElementById('dyurl').value;
-        	console.log("抖音url "+name1)
-            $.ajax({
-                    type: "POST",
-                    url: "/down/",
-                    contentType: "application/json", //必须有
-                    // dataType: "json", //表示返回值类型，不必须
-                    data: name1,  //相当于 //data: "{'username':'admin', 'password':'123456'}",
-                    success: function (res) {
-                        alert('成功解析直播间id ：'+res);
-                    },
-					error : function(res) {
-                    	alert('失败 '+res);
-                	}
-            });
-        	document.getElementById('dyurl').value = "";
-        }
+		function login() {
+			var name1 = document.getElementById('dyurl').value.trim();
+			if (!name1) {
+				alert('请输入抖音分享链接！');
+				return;
+			}
+
+			// 显示加载提示
+			$('#loadingModal').fadeIn();
+
+			$.ajax({
+				type: "POST",
+				url: "/down/",
+				contentType: "application/json",
+				data: name1,
+				success: function (res) {
+					$('#loadingModal').fadeOut(); // 隐藏加载提示
+					alert('成功解析直播间id：' + res);
+				},
+				error: function (res) {
+					$('#loadingModal').fadeOut();
+					alert('解析失败：' + res.responseText || '网络错误');
+				}
+			});
+
+			document.getElementById('dyurl').value = "";
+		}
         function del() {
         	var name1 = document.getElementById('dyurl').value;
         	// alert('del '+name1);
@@ -166,6 +205,13 @@
     </script>
 </head>
 <body>
+	<!-- 加载提示框 -->
+	<div id="loadingModal" style="display: none;">
+		<div class="loading-overlay">
+			<div class="spinner"></div>
+			<p>正在解析直播间，请稍候...</p>
+		</div>
+	</div>
 	<div class="htmleaf-container">
 		<div class="demo form-bg">
 	        <div class="container">
