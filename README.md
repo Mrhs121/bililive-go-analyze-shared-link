@@ -27,6 +27,10 @@ python live_http_server.py
 ```
 docker build -t bililive-go-analyze:latest .
 ```
+飞牛NAS示例
+
+<img width="690" height="562" alt="截屏2025-08-09 20 01 07" src="https://github.com/user-attachments/assets/c9e10601-c136-40e1-895f-69d26782680e" />
+
 
 ## 4. Demo 演示
 例如QQ飞车手游的抖音直播间
