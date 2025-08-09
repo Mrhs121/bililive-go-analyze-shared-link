@@ -10,17 +10,17 @@ bililive-go的扩展插件，直接通过手机上获取到的直播间分享链
 pip install flask requests
 ```
 
-## 2. 配置 NAS 地址
-编辑 live_http_server.py.py，将以下变量中的 URL 替换为你本地 NAS 上 bililive-go 服务的实际地址：
+
+## 2. 启动
+服务默认端口8888
 ```
-nas_biligo_url = "http://192.168.6.188:8080"
+python live_http_server.py <bililive-go 的 url>
+```
+例如bililive-go的url为http://192.168.6.188:8080，具体的执行命令即为：
+```
+python live_http_server.py 192.168.6.188:8080
 ```
 
-## 3. 启动
-默认端口8888
-```
-python live_http_server.py
-```
 <img width="1084" height="137" alt="截屏2025-08-09 19 25 24" src="https://github.com/user-attachments/assets/f5e533f5-3175-422a-95ab-5c2b02ca5ba8" />
 
 ### 构建Docker镜像
@@ -29,10 +29,12 @@ docker build -t bililive-go-analyze:latest .
 ```
 飞牛NAS示例
 
-<img width="690" height="562" alt="截屏2025-08-09 20 01 07" src="https://github.com/user-attachments/assets/c9e10601-c136-40e1-895f-69d26782680e" />
+<img width="670" height="290" alt="截屏2025-08-09 21 16 18" src="https://github.com/user-attachments/assets/2ec99eeb-9bd6-401d-9b06-467e37b94665" />
+
+<img width="656" height="204" alt="截屏2025-08-09 21 16 13" src="https://github.com/user-attachments/assets/72ca52ab-72f7-44b9-8bcd-bfb52e68d4b6" />
 
 
-## 4. Demo 演示
+## 3. Demo 演示
 例如QQ飞车手游的抖音直播间
 
 ![5c527cb0d0a3650187e494e7a176448a](https://github.com/user-attachments/assets/b7cde83b-50c2-435f-88c3-b5ba28f51315)
